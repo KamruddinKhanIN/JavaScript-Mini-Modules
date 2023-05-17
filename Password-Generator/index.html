@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator - Madee Byy ACCIO</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>PASSWORD GENERATOR</h1>
+
+        <div class="password-container">
+            <input readonly type="text" placeholder="Password" class="display" data-passwordDisplay> <!--WE use a custom attribute data-passwordDisplay to use it in querySelector-->
+
+            <button>
+                <span data-copyMsg></span>
+                <img src="assets/copy.svg" alt="" height="23px" width="23px" data-copyButton>
+
+            </button>
+
+        </div>
+
+        <div class="input-container">
+            <p>Password Length</p>
+            <p data-passwordLength>10</p>
+        </div>
+
+        <input type="range" min="1" max="20" class="slider" value="10" data-Slider>
+
+        <div class="checkboxes">
+            <input type="checkbox" id="uppercase">
+            <label for="uppercase">Include Upercase Letters</label>
+
+            <input type="checkbox" id="lowercase">
+            <label for="uppercase">Include Lowercase Letters</label>
+
+            <input type="checkbox" id="numbers">
+            <label for="uppercase">Include Numbers</label>
+
+            <input type="checkbox" id="symbols">
+            <label for="uppercase">Include Symbols</label>
+        </div>
+
+
+        <div class="strength">
+          
+           <span>Strength</span>
+
+           <div class="strength-indicator"></div>
+
+        </div>
+
+        <button data-generatePassword>GENERATE PASSWORD</button>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
