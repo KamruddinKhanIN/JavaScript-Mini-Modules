@@ -14,8 +14,29 @@ const generatePasswordButton=document.querySelector("[data-generatePassword]");
 
 // We put default values for now.
 let pass="";
-let passwordLeenght=10;
+let passwordLength=10;
 let checkboxStatus=1;
 let strengthOfPassword;
 
  
+// This function sets the password length accordin to slider input
+function handleSlider(){
+    inputSlider.value= passwordLength;
+    dataLengthDisplay.textContent= passwordLength;
+}
+
+function setStrengthIndicator(strength){
+     strengthIndicator.classList.add(strength);
+}
+
+function getRandomInt(min,max){
+    return Math.floor((Math.random() * (max-min))+min); 
+}
+
+function genearteRandomNo(){
+    return getRandomInt(0,9);
+}
+
+function getLowerCase(){
+    return String.fromCharCode(getRandomInt(97,123));
+}
