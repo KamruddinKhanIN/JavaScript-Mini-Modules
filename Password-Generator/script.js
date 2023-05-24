@@ -40,4 +40,3 @@ function genearteRandomNo(){
 function getLowerCase(){
     return String.fromCharCode(getRandomInt(97,123));
 }
-// 
