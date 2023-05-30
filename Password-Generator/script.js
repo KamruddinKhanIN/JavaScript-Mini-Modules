@@ -19,6 +19,7 @@ let checkboxStatus=1;
 let strengthOfPassword;
 const symbols="+-*/(){}[]`<>:;'!@#$"
 upperCaseChck.checked=true;
+setStrengthIndicator("initial");
 
 handleSlider();
 
@@ -36,6 +37,18 @@ passwordCopyButton.addEventListener('click',()=>{
 })
 
 async function copyContent(){
+    if(password.value=="")
+    {
+        passwordCopyMsg.textContent="Nothing To Copy";
+
+        passwordCopyMsg.classList.add("active");
+
+        setTimeout(() => {
+            passwordCopyMsg.classList.remove("active");
+        }, 2000);
+
+        return;
+    }
     try{
     await navigator.clipboard.writeText(password.value);
     passwordCopyMsg.textContent="Copied";
@@ -142,10 +155,12 @@ function shufflePassword(pass){
 function handleSlider(){
     inputSlider.value= passwordLength;
     dataLengthDisplay.textContent= passwordLength;
-}
 
-function setStrengthIndicator(strength){
-     strengthIndicator.classList.add(strength);
+    // The below codde controls the slider color which changes accordingly to the slider position, whihc means the color cyan is only upto the thumb
+    const min=inputSlider.min;
+    const max=inputSlider.max;
+    inputSlider.style.backgroundSize = ( (passwordLength - min)*100/(max - min)) + "% 100%"
+    
 }
 
 function getRandomInt(min,max){
@@ -192,7 +207,13 @@ function calcPasswordStrength(){
 
     else
     {
-        setStrengthIndicator("hard");
+        setStrengthIndicator("weak");
     }
+}
+
+function setStrengthIndicator(strength){
+    strengthIndicator.classList.remove(strengthOfPassword);
+    strengthIndicator.classList.add(strength);
+    strengthOfPassword=strength;
 }
 
