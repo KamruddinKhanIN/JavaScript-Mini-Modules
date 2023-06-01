@@ -28,6 +28,12 @@
     padding: 10px;
 }
 
+.weather-app{
+    margin: 20px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
 h1{
     padding: 10px;
     text-align: center;
