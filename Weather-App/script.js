@@ -46,7 +46,7 @@ function switchTab(clickedTab){
 
 }
 
-userTab.addEventListener('click',() => {switchTab(userTab)});
+// userTab.addEventListener('click',() => {switchTab(userTab)});
 
 function getfromSessionStorage(){
     const localCoordinates= sessionStorage.getItem("user-coordinates");
@@ -97,10 +97,10 @@ function renderWeatherInfo(weatherInfo){
     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     desc.innerText = weatherInfo?.weather?.[0]?.description;
     weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
-    temp.innerText = weatherInfo?.main?.temp;
-    windspeed.innertext = weatherInfo?.wind?.speed;
-    humidity.innertext = weatherInfo?.main?.humidity;
-    cloudiness.innerText = weatherInfo?.clouds?.all;
+    temp.innerText = `${weatherInfo?.main?.temp} °C`;
+    windspeed.innerText = `${weatherInfo?.wind?.speed} m/s`;
+    humidity.innerText = `${weatherInfo?.main?.humidity}%`;
+    cloudiness.innerText = `${weatherInfo?.clouds?.all}%`;
 
 }
 
@@ -139,6 +139,8 @@ searchForm.addEventListener("submit", (e) => {
         fetchSearchWeatherInfo(cityName);
 })
 
+const errorPage= document.querySelector("[data-404Error]")
+
 async function fetchSearchWeatherInfo(city) {
     loadingScreen.classList.add("active");
     weatherInfoContainer.classList.remove("active");
@@ -149,9 +151,21 @@ async function fetchSearchWeatherInfo(city) {
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
           );
         const data = await response.json();
+
+        console.log("Rsponse" , response);
+
+        if(response.status != 404)
+        {
         loadingScreen.classList.remove("active");
+        errorPage.classList.remove("active");
         renderWeatherInfo(data);
         weatherInfoContainer.classList.add("active");
+        }
+
+        else{
+        loadingScreen.classList.remove("active");
+        errorPage.classList.add("active");
+        }
     }
     catch(err) {
         alert("Please Refresh Your Browser");

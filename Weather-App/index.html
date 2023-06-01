@@ -19,7 +19,7 @@
 
             <div class="weather-container">
 
-                <div class="grant-location-container">
+                <div class="grant-location-container sub-container">
                     <img src="./assets/location.png" alt="" width="80" height="80" loading="lazy">
 
                     <p>Grant Location Access</p>
@@ -35,12 +35,12 @@
                     <button class="btn"><img src="assets/search.png" alt="" width="20" height="20" loading="lazy"></button>
                 </form>
 
-                <div class="loading-screen-container">
+                <div class="loading-screen-container sub-container">
                     <img src="assets/loading.gif" alt="" width="150" height="150" loading="lazy">
                     <p>Loading</p>
                 </div>
 
-                <div class="weather-data-main-container">
+                <div class="weather-data-main-container sub-container">
                     <div class="country-name-container">
                         <p class="country-name" data-cityName></p>
                         <img src="" alt="" data-cityFlag>
@@ -71,6 +71,13 @@
                             <p data-clouds></p>
                         </div>
                     </div>
+
+
+                </div>
+
+                <div class="error-container sub-container" data-404Error>
+                    <img src="assets/not-found.png" alt="" >
+                    <p>City Not Found</p>
                 </div>
             </div>
         </div>
