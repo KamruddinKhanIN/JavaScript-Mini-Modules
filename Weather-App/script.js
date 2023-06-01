@@ -40,6 +40,11 @@ function switchTab(clickedTab){
         searchForm.classList.remove("active");
         weatherInfoContainer.classList.remove("active");
 
+        if(errorPage.classList.contains("active"))
+        {
+            errorPage.classList.remove("active");
+        }
+
         getfromSessionStorage();
         }
      }
