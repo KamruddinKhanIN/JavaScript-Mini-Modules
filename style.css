@@ -110,3 +110,21 @@ a{
         margin-right: auto;
     }
 }
+
+@media screen and (max-width:500px){
+    .heading{
+        width: fit-content;
+        position: relative;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .App-Container{
+        margin-top: 25px;
+    }
+
+    .wrapper{
+        height: 1000%;
+    }
+}
